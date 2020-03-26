@@ -42,6 +42,7 @@ namespace DatingApp.API.Controllers
             var createUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
             return StatusCode(201);
+           //return Ok();
 
         }
 
