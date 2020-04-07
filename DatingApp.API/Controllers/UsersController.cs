@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -36,6 +37,7 @@ namespace DatingApp.API.Controllers
         {
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
+            
             return Ok(userToReturn);
         }
 

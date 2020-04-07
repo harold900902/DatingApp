@@ -1,0 +1,22 @@
+.img-thumbnail {
+    margin: 25px;
+    width: 85%;
+    height: 85%;
+}
+.card-body {
+    padding: 0 25px;
+}
+.card-footer {
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border-top: none;
+}
+.btn-green {
+    border-bottom-left-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+}
+.btn-red {
+    border-bottom-right-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+}
+
