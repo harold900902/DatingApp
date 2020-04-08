@@ -14,11 +14,11 @@
                     </div>
                     <div>
                         <strong> Last Active:</strong>
-                        <p>{{user.lastActivate}}</p>
+                        <p>{{user.lastActive | date:'yyyy-MM-dd h:mma'}}</p>
                     </div>
                     <div>
                         <strong> Member since:</strong>
-                        <p>{{user?.created}}</p>
+                        <p>{{user.created | date:'yyyy-MM-dd'}}</p>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -30,9 +30,15 @@
             </div>
         </div>
         <div class="col-sm-8">
+            
             <div class="tab-panel">
+                <div class="card-footer">
+                    <div class="btn-group d-flex">
+                        <h4> Name: </h4><h4 class="ml-1"> {{user.knownAs}}</h4>
+                    </div>
+                </div>
                 <tabset class="member-tabset">
-                    <tab heading="About {{user.knownAs}}">
+                    <tab heading="About">
                         <h4>Description</h4>    
                         <p>{{user.introduction}}</p>
                         <h4>Looking For</h4>

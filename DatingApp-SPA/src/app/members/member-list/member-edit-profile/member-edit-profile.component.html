@@ -1,0 +1,93 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>Information:</strong> You have made changes. Any unsaved changes will be lost!
+      </div>
+    </div>
+      <div class="col-sm-4">
+          <div class="card">
+              <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.knownAs}}">
+              <div class="card-body">
+             
+                    <div>
+                        <strong>Location:</strong>
+                        <p>{{user.city}}, {{user?.country}}</p>
+                    </div>
+                    <div>
+                        <strong> Age:</strong>
+                        <p>{{user.age}}</p>
+                    </div>
+                    <div>
+                        <strong> Last Active:</strong>
+                        <p>{{user.lastActive | date:'yyyy-MM-dd h:mma'}}</p>
+                    </div>
+                    <div>
+                        <strong> Member since:</strong>
+                        <p>{{user.created | date:'yyyy-MM-dd'}}</p>
+                    </div>
+               
+              </div>
+              <div class="card-footer">
+              
+                      <button form="editForm" [disabled]="!editForm.dirty" class="btn btn-success btn-block">Save Changes</button>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-8">
+          
+          <div class="tab-panel">
+              <div class="card-footer">
+                  <div class="btn-group d-flex">
+                      <h4> Name: </h4><h4 class="ml-1"> {{user.knownAs}}</h4>
+                  </div>
+              </div>
+              <tabset class="member-tabset">
+                  <tab heading="Edit Profile">
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                      <div class="input-group input-group mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing">Description</span>
+                        </div>
+                       <textarea name="introduction" rows="6" class="form-control" [(ngModel)]="user.introduction"></textarea>
+                      </div>
+                      <div class="input-group input-group mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Looking For</span>
+                        </div>
+                        <textarea name="lookingFor" rows="6" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
+                      </div>
+                      <div class="input-group input-group mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Interests</span>
+                        </div>
+                        <textarea name="interests" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
+                      </div>
+                      <div class="form-inline">
+                      <div class="input-group input-group mb-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">City</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="city" aria-describedby="inputGroup-sizing-sm" name="city"  [(ngModel)]="user.city">
+                      </div>
+                      <div class="input-group input-group mb-2 ml-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Country</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="country" aria-describedby="inputGroup-sizing-sm" name="country" [(ngModel)]="user.country">
+                      </div>
+                    </div>
+                   
+                  </form>
+                   
+                  </tab>
+                  <tab heading="Edit Photos">
+                      <h4>Photo edit will go here</h4>    
+                     
+                  </tab>
+                  </tabset>
+          </div>
+      </div>
+  </div>
+</div>

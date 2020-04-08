@@ -27,6 +27,10 @@ import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberEditProfileComponent } from './members/member-list/member-edit-profile/member-edit-profile.component';
+import { MemberProfileComponent } from './members/member-list/member-profile/member-profile.component';
+import { MemberEditProfileResolver } from './_resolvers/member-edit-profile.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 
 export function tokenGetter(){
@@ -43,7 +47,9 @@ export function tokenGetter(){
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailsComponent
+      MemberDetailsComponent,
+      MemberEditProfileComponent,
+      MemberProfileComponent
    ],
    imports: [
       BrowserModule,
@@ -70,7 +76,8 @@ export function tokenGetter(){
       UserService,
       MemberDetailResolver,
       MemberListResolver,
-    
+      MemberEditProfileResolver,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent

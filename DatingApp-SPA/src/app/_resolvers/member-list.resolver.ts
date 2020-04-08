@@ -11,14 +11,14 @@ import { error } from 'protractor';
 
 @Injectable()
 export class MemberListResolver implements Resolve<User[]> {
-    
+
     constructor(private userService: UserService, private router: Router, private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
         return this.userService.getUsers().pipe(
             catchError( error => {
                 this.alertify.error('Problem retrieving data');
-                this.router.navigate(['/home']);
+                this.router.navigate(['/']);
                 return of(null);
             })
         );
