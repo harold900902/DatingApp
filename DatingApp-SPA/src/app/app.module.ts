@@ -31,6 +31,9 @@ import { MemberEditProfileComponent } from './members/member-list/member-edit-pr
 import { MemberProfileComponent } from './members/member-list/member-profile/member-profile.component';
 import { MemberEditProfileResolver } from './_resolvers/member-edit-profile.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { MemberProfileResolver } from './_resolvers/member-profile.resolver';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 export function tokenGetter(){
@@ -49,7 +52,8 @@ export function tokenGetter(){
       MemberCardComponent,
       MemberDetailsComponent,
       MemberEditProfileComponent,
-      MemberProfileComponent
+      MemberProfileComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -58,6 +62,7 @@ export function tokenGetter(){
       BrowserAnimationsModule,
       TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
+      FileUploadModule,
       NgxGalleryModule,
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
@@ -76,6 +81,7 @@ export function tokenGetter(){
       UserService,
       MemberDetailResolver,
       MemberListResolver,
+      MemberProfileResolver,
       MemberEditProfileResolver,
       PreventUnsavedChanges
    ],

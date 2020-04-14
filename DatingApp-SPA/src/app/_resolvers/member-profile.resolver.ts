@@ -11,7 +11,7 @@ import { AuthService } from '../_services/auth.service';
 
 
 @Injectable()
-export class MemberEditProfileResolver implements Resolve<User> {
+export class MemberProfileResolver implements Resolve<User> {
 
     constructor(private userService: UserService, private router: Router,
                 private alertify: AlertifyService, private authService: AuthService) {}
