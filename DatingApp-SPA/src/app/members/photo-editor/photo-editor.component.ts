@@ -50,13 +50,12 @@ export class PhotoEditorComponent implements OnInit {
         }
       }
     };
-
-   
   }
 
   ngOnInit() {
 
   } 
+
   SetMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.authService.decodeToken.nameid, photo.id).subscribe(() => {
       this.currentPhoto = this.photos.filter(p => p.isMain === true)[0];
@@ -80,9 +79,7 @@ export class PhotoEditorComponent implements OnInit {
         this.alertify.error('Failed to delete the photo');
       });
     });
-   
-
-    }
+  }
    
 
   fileOverBase(e: any): void {

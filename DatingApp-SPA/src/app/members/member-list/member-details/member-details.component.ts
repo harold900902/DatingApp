@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
 
 
+
 @Component({
   selector: 'app-member-details',
   templateUrl: './member-details.component.html',
@@ -16,7 +17,8 @@ export class MemberDetailsComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private alertify: AlertifyService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.loadUser();

@@ -14,7 +14,7 @@ export class MemberProfileComponent implements OnInit {
   user: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-
+  
   constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class MemberProfileComponent implements OnInit {
   loadUser() {
     this.route.data.subscribe(data => {
     this.user = data['user'];
+    
   });
   }
 

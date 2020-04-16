@@ -35,11 +35,13 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberProfileResolver } from './_resolvers/member-profile.resolver';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'src/assets/time-ago.pipe';
 
 
 export function tokenGetter(){
    return localStorage.getItem('token');
 }
+
 
 @NgModule({
    declarations: [
@@ -54,7 +56,8 @@ export function tokenGetter(){
       MemberDetailsComponent,
       MemberEditProfileComponent,
       MemberProfileComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,
@@ -74,7 +77,8 @@ export function tokenGetter(){
            whitelistedDomains: ['localhost:5000'],
            blacklistedRoutes: ['localhost:3001/api/auth']
          }
-       })
+       }),
+    
    ],
    providers: [
       AuthService,
