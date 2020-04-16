@@ -23,11 +23,10 @@
           Drop Photos Here
       </div>
 
-       Multiple
-      <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
-
-      Single
-      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <label class="btn custom-input-btn">
+        <input type="file" name="photo" style="display:none" accept="*" ng2FileSelect [uploader]="uploader" multiple>        
+        <i class="fa fa-cloud-upload"></i> Upload Files
+       </label>
   </div>
 
   <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">

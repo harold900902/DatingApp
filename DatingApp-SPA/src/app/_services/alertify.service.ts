@@ -13,7 +13,8 @@ constructor() { }
       if (e) {
         okCallback();
       }else {}
-    });
+    }).setHeader('<em> Confirm to Action </em>');
+    
   }
 
   success(message: string){
