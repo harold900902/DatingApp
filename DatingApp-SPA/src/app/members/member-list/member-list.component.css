@@ -1,0 +1,10 @@
+#filter.panel div.panel div.card-header {
+    background-color: white !important;
+    padding: unset;
+    border: unset;
+}
+div#filter1 {
+    background-color: white !important;
+    padding: unset;
+    border: unset;
+}

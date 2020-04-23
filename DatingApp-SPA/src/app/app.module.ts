@@ -10,6 +10,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { appRoutes } from './routes';
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 import { AppComponent } from './app.component';
@@ -35,7 +36,9 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberProfileResolver } from './_resolvers/member-profile.resolver';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
-import { TimeAgoPipe } from 'src/assets/time-ago.pipe';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 
 
 export function tokenGetter(){
@@ -57,7 +60,6 @@ export function tokenGetter(){
       MemberEditProfileComponent,
       MemberProfileComponent,
       PhotoEditorComponent,
-      TimeAgoPipe
    ],
    imports: [
       BrowserModule,
@@ -68,7 +70,10 @@ export function tokenGetter(){
       TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
       FileUploadModule,
+      ButtonsModule.forRoot(),
+      AccordionModule.forRoot(),
       NgxGalleryModule,
+      PaginationModule.forRoot(),
       BsDatepickerModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
