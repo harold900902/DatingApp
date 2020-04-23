@@ -38,6 +38,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { FileUploadModule } from 'ng2-file-upload';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ListsResolver } from './_resolvers/lists.resolver';
 
 
 
@@ -95,7 +96,8 @@ export function tokenGetter(){
       MemberListResolver,
       MemberProfileResolver,
       MemberEditProfileResolver,
-      PreventUnsavedChanges
+      PreventUnsavedChanges,
+      ListsResolver
    ],
    bootstrap: [
       AppComponent
