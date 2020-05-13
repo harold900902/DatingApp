@@ -5,6 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/ngx-bootstrap-tabs';
+import { AuthService } from 'src/app/_services/auth.service';
 
 
 
@@ -21,7 +22,8 @@ export class MemberDetailsComponent implements OnInit, AfterViewInit {
   galleryImages: NgxGalleryImage[];
 
   constructor(private userService: UserService, private alertify: AlertifyService,
-              private route: ActivatedRoute, private cdRef : ChangeDetectorRef) { }
+              private route: ActivatedRoute, private cdRef: ChangeDetectorRef,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.loadUser();
@@ -69,5 +71,14 @@ export class MemberDetailsComponent implements OnInit, AfterViewInit {
   }
   selectTab(tabId: number) {
     this.staticTabs.tabs[tabId].active = true;
+  }
+  sendLike() {
+    var userId = this.authService.decodeToken.nameid;
+    this.userService.sendLike(userId, this.user.id).subscribe(data => {
+      this.alertify.success('You have liked: ' + this.user.knownAs);
+    }, error => {
+      this.alertify.error(error);
+    });
+
   }
 }

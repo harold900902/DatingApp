@@ -6,6 +6,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { User } from 'src/app/_models/user';
 import { tap } from 'rxjs/operators';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-member-messages',
@@ -16,6 +17,7 @@ export class MemberMessagesComponent implements OnInit {
   @Input() recipientId: number;
   messages: Message[];
   newMessage: any = {};
+
 
   constructor(private route: ActivatedRoute, private messageService: MessageService,
               private alertify: AlertifyService, private authService: AuthService) { }
@@ -52,6 +54,8 @@ export class MemberMessagesComponent implements OnInit {
    }
    );
   }
+
+  
   
 
 }
