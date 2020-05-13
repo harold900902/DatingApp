@@ -4,15 +4,16 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { MemberDetailsComponent } from './members/member-list/member-details/member-details.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
-import { MemberProfileComponent } from './members/member-list/member-profile/member-profile.component';
-import { MemberEditProfileComponent } from './members/member-list/member-edit-profile/member-edit-profile.component';
+import { MemberProfileComponent } from './members/member-profile/member-profile.component';
+import { MemberEditProfileComponent } from './members/member-edit-profile/member-edit-profile.component';
 import { MemberEditProfileResolver } from './_resolvers/member-edit-profile.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberProfileResolver } from './_resolvers/member-profile.resolver';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessageResolver } from './_resolvers/message.resolver';
 
 export const appRoutes: Routes = [
 
@@ -27,7 +28,7 @@ export const appRoutes: Routes = [
             {path: 'members/profile/edit', component: MemberEditProfileComponent,
              resolve: {user: MemberEditProfileResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'members/:id', component: MemberDetailsComponent, resolve: {user: MemberDetailResolver}},
-            {path: 'messages', component: MessagesComponent},
+            {path: 'messages', component: MessagesComponent, resolve: {messages: MessageResolver}},
             {path: 'lists', component: ListsComponent, resolve: {users: ListsResolver}},
         ]
     },

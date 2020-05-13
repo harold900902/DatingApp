@@ -1,0 +1,59 @@
+.card{
+    border: none;
+}
+.chat{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.m-clearfix{
+    margin-bottom: 7px;
+    position: relative;
+}
+.rounded-circle{
+    height: 30px;
+    width: 30px;
+}
+.card-body{
+    overflow-y: scroll;
+    height: 400px;
+}
+.chat-img{
+    height: 32px;
+    width: 32px;  
+}
+.chat-img img{
+    max-height: 28px;
+    max-width: 28px;
+}
+.content-msg-left{
+    float: left;
+}
+
+.msg-left{
+    background-color: gainsboro;
+    float: left;
+    border-radius: 6px;
+    background-attachment: fixed;
+    position: relative;
+    line-height: 1.38;
+    padding: 3px;
+    padding-left: 6px;
+    margin-left: 2px;
+   
+}
+.msg-right{
+    background-color:#ef4f17;
+    float: right;
+    clear: right;
+    color: cornsilk;
+    border-radius: 6px;
+    background-attachment: fixed;
+    position: relative;
+    line-height: 1.38;
+    padding: 6px;
+}
+
+.line{
+    display: inline-block;
+}

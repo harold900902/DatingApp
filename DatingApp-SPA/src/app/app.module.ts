@@ -22,15 +22,15 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
-import { MemberCardComponent } from './members/member-list/member-card/member-card.component';
-import { MemberDetailsComponent } from './members/member-list/member-details/member-details.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
-import { MemberEditProfileComponent } from './members/member-list/member-edit-profile/member-edit-profile.component';
-import { MemberProfileComponent } from './members/member-list/member-profile/member-profile.component';
+import { MemberEditProfileComponent } from './members/member-edit-profile/member-edit-profile.component';
+import { MemberProfileComponent } from './members/member-profile/member-profile.component';
 import { MemberEditProfileResolver } from './_resolvers/member-edit-profile.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberProfileResolver } from './_resolvers/member-profile.resolver';
@@ -39,6 +39,8 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessageResolver } from './_resolvers/message.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 
@@ -61,6 +63,7 @@ export function tokenGetter(){
       MemberEditProfileComponent,
       MemberProfileComponent,
       PhotoEditorComponent,
+      MemberMessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -97,7 +100,8 @@ export function tokenGetter(){
       MemberProfileResolver,
       MemberEditProfileResolver,
       PreventUnsavedChanges,
-      ListsResolver
+      ListsResolver,
+      MessageResolver
    ],
    bootstrap: [
       AppComponent

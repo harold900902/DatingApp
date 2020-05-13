@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, CanDeactivate } from '@angular/router';
 import { MemberEditProfileResolver } from '../_resolvers/member-edit-profile.resolver';
-import { MemberEditProfileComponent } from '../members/member-list/member-edit-profile/member-edit-profile.component';
+import { MemberEditProfileComponent } from '../members/member-edit-profile/member-edit-profile.component';
 //import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Injectable()

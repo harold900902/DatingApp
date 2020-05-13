@@ -1,27 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
+import { TabsetComponent } from 'ngx-bootstrap/tabs/ngx-bootstrap-tabs';
 
 
 
 @Component({
   selector: 'app-member-details',
   templateUrl: './member-details.component.html',
-  styleUrls: ['./member-details.component.css']
+  styleUrls: ['./member-details.component.css'],
+ 
 })
-export class MemberDetailsComponent implements OnInit {
+export class MemberDetailsComponent implements OnInit, AfterViewInit {
+  @ViewChild('staticTabs', { static: false }) staticTabs: TabsetComponent;
   user: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
   constructor(private userService: UserService, private alertify: AlertifyService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private cdRef : ChangeDetectorRef) { }
 
   ngOnInit() {
     this.loadUser();
+   
+
     this.galleryOptions = [
       {
           width: '500px',
@@ -33,7 +38,17 @@ export class MemberDetailsComponent implements OnInit {
       },
     ];
     this.galleryImages = this.getImages();
+   
+
   }
+  ngAfterViewInit(){
+    this.route.queryParams.subscribe(params => {
+      const selectTabId = params['tab'];
+      selectTabId > 0 ? this.selectTab(selectTabId) : this.selectTab(0);
+    });
+    this.cdRef.detectChanges();
+  }
+  
   loadUser() {
     this.route.data.subscribe(data => {
     this.user = data['user'];
@@ -51,5 +66,8 @@ export class MemberDetailsComponent implements OnInit {
       });
     }
     return photosURL;
+  }
+  selectTab(tabId: number) {
+    this.staticTabs.tabs[tabId].active = true;
   }
 }
