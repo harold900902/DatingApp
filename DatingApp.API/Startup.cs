@@ -8,6 +8,7 @@ using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -32,10 +33,27 @@ namespace DatingApp.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureDevelopmentServices(IServiceCollection services){
+             services.AddDbContext<DataContext>(x => x.UseSqlite
+             (Configuration.GetConnectionString("DefaultConnection")));
+            
+            ConfigureServices(services);
+        }
+         public void ConfigureProductionServices(IServiceCollection services){
+             
+             services.AddDbContext<DataContext>(x => x.UseMySql
+             (Configuration.GetConnectionString("DefaultConnection")));
+        //      services.AddAuthorization(options =>
+        // {
+        //     options.DefaultPolicy = new AuthorizationPolicyBuilder()
+        //       .RequireAuthenticatedUser()
+        //       .Build();
+        // });
+            ConfigureServices(services);
+        }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+           
             services.AddControllers().AddNewtonsoftJson(opt => {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
@@ -88,9 +106,13 @@ namespace DatingApp.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }
